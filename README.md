@@ -16,7 +16,7 @@
 
 ### Overview
 
-![](https://gitee.com/gltdd/typora-imgs/raw/master/imgs/20250102135008.png)
+![1](https://raw.githubusercontent.com/Gonglitian/images/main/img/20250103134137726.png)
 
 ### Details for the Connector of Lidar
 
@@ -24,7 +24,7 @@ Refer to the [user manual](https://www.hesaitech.com/wp-content/uploads/QT128C2X
 
 >  The connector is designed to withstand at least 10 mating cycles; exceeding this number may increase the risk of connector damage.
 
-![image-20250102142609253](https://gitee.com/gltdd/typora-imgs/raw/master/imgs/20250102142610.png)
+![2](https://raw.githubusercontent.com/Gonglitian/images/main/img/20250103134414380.png)
 - Connection
 1. Turn off the power source.
 2. Ensure the plug's red CPA is on the same side as the socket's locking nose.
@@ -49,8 +49,7 @@ sudo ifconfig ${interface_name} ${ip_addr}
 2.  Replace **\${interface_name}** with the host computer's network interface name.
    + Enter "ifconfig" in the terminal.
 
-
-![image-20250102145404641](https://gitee.com/gltdd/typora-imgs/raw/master/imgs/20250102145406.png)
+![3](https://raw.githubusercontent.com/Gonglitian/images/main/img/20250103134640567.png)
 
 3. Replace **\${ip_addr}** with the host computer's IP address.
    + **${ip_addr}** can be selected from **2 to 200** and from **202 to 254**, e.g. 192.168.1.100..
@@ -61,7 +60,7 @@ If needed, web control is used for setting parameters, checking device info, and
 
 Enter this URL in your web browser: 192.168.1.201.
 
-![image-20250103130417260](https://gitee.com/gltdd/typora-imgs/raw/master/imgs/20250103130418.png)
+![4](https://raw.githubusercontent.com/Gonglitian/images/main/img/20250103134652689.png)
 
 ## Hesai Lidar ROS Driver Installation
 
