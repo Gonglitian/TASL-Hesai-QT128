@@ -10,6 +10,7 @@
    * [ROS1](#ros1)
    * [ROS2](#ros2)
 - [Data Collection](#data-collection)
+- [Introduction to the configuration file `config.yaml` parameters](#introduction-to-the-configuration-file-configyaml-parameters)
 - [References](#references)
 
 ## Lidar Wiring
@@ -47,7 +48,7 @@ sudo ifconfig ${interface_name} ${ip_addr}
 ```
 
 2.  Replace **\${interface_name}** with the host computer's network interface name.
-     + Enter "ifconfig" in the terminal.
+   + Enter "ifconfig" in the terminal.
 
 ![3](https://raw.githubusercontent.com/Gonglitian/images/main/img/20250103134640567.png)
 
@@ -90,9 +91,9 @@ sudo apt-get install -y libyaml-cpp-dev
 + Clone driver source code and compile.
 
 ```bash
-mkdir lidar_ws && mkdir lidar_ws/src
+mkdir ${lidar_ws_name} && mkdir ${lidar_ws_name}/src
 
-cd lidar_ws/src
+cd ${lidar_ws_name}/src
 
 git clone --recurse-submodules https://github.com/HesaiTechnology/HesaiLidar_ROS_2.0.git
 
@@ -116,9 +117,9 @@ roslaunch hesai_ros_driver start.launch
 + Clone driver source code and compile.
 
 ```bash
-mkdir lidar_ws && mkdir lidar_ws/src
+mkdir ${lidar_ws_name} && mkdir ${lidar_ws_name}/src
 
-cd lidar_ws/src
+cd ${lidar_ws_name}/src
 
 git clone --recurse-submodules https://github.com/HesaiTechnology/HesaiLidar_ROS_2.0.git
 
@@ -139,13 +140,40 @@ ros2 launch hesai_ros_driver start.py
 
 You can get Lidar data by checking or subscribing to the topic.
 
-+ topic: `/lidar_points`
++ topic: `/lidar_points` (topic name can be modified in `${lidar_ws_name}/src/HesaiLidar_ROS_2.0/config/config.yaml`)
   + msg type: [sensor_msgs/PointCloud2](https://docs.ros.org/en/jade/api/sensor_msgs/html/msg/PointCloud2.html)
   + number of points for single frame: 230400
   + frequency: 10 Hz
-  
 + use `rosbag` to record this topic:
-  + speed of data generation: **3.4 GB/min**
+  + speed of data generation: **~ 3.4 GB/min**
+
+## Introduction to the configuration file `config.yaml` parameters
+
+```yaml
+lidar:
+- driver:
+    udp_port: 2368                                       #UDP port of lidar
+    ptc_port: 9347                                       #PTC port of lidar
+    device_ip_address: 192.168.1.201                     #IP address of lidar
+    pcap_path: "<Your PCAP file path>"                   #The path of pcap file (set during offline playback)
+    correction_file_path: "<Your correction file path>"  #LiDAR angle file, required for offline playback of pcap/packet rosbag
+    firetimes_path: "<Your firetime file path>"          #The path of firetimes file
+    source_type: 2                                       #The type of data source, 1: real-time lidar connection, 2: pcap, 3: packet rosbag
+    pcap_play_synchronization: true                      #Pcap play rate synchronize with the host time
+    x: 0                                                 #Calibration parameter
+    y: 0                                                 #Calibration parameter
+    z: 0                                                 #Calibration parameter
+    roll: 0                                              #Calibration parameter
+    pitch: 0                                             #Calibration parameter
+    yaw: 0                                               #Calibration parameter
+ros:
+    ros_frame_id: hesai_lidar                            #Frame id of packet message and point cloud message
+    ros_recv_packet_topic: /lidar_packets                #Topic used to receive lidar packets from ROS
+    ros_send_packet_topic: /lidar_packets                #Topic used to send lidar packets through ROS
+    ros_send_point_cloud_topic: /lidar_points            #Topic used to send point cloud through ROS
+    send_packet_ros: true                                #true: Send packets through ROS 
+    send_point_cloud_ros: true                           #true: Send point cloud through ROS 
+```
 
 ## References
 
