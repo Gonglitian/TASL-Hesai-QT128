@@ -47,7 +47,7 @@ sudo ifconfig ${interface_name} ${ip_addr}
 ```
 
 2.  Replace **\${interface_name}** with the host computer's network interface name.
-   + Enter "ifconfig" in the terminal.
+     + Enter "ifconfig" in the terminal.
 
 ![3](https://raw.githubusercontent.com/Gonglitian/images/main/img/20250103134640567.png)
 
@@ -145,7 +145,7 @@ You can get Lidar data by checking or subscribing to the topic.
   + frequency: 10 Hz
   
 + use `rosbag` to record this topic:
-  + speed of data generation: **~ 3.4 GB/min**
+  + speed of data generation: **3.4 GB/min**
 
 ## References
 
