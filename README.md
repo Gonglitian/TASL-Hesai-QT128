@@ -113,8 +113,8 @@ sudo apt-get install -y libyaml-cpp-dev
 1. Clone the driver and build:
 
 ```bash
-mkdir ${lidar_ws_name} && mkdir ${lidar_ws_name}/src
-cd ${lidar_ws_name}/src
+mkdir <your_ws_dir_name> && mkdir <your_ws_dir_name>/src
+cd <your_ws_dir_name>/src
 git clone --recurse-submodules https://github.com/HesaiTechnology/HesaiLidar_ROS_2.0.git
 cd ..
 catkin_make
@@ -134,8 +134,8 @@ roslaunch hesai_ros_driver start.launch
 1. Clone the driver and build:
 
 ```bash
-mkdir ${lidar_ws_name} && mkdir ${lidar_ws_name}/src
-cd ${lidar_ws_name}/src
+mkdir <your_ws_dir_name> && mkdir <your_ws_dir_name>/src
+cd <your_ws_dir_name>/src
 git clone --recurse-submodules https://github.com/HesaiTechnology/HesaiLidar_ROS_2.0.git
 cd ..
 colcon build --symlink-install
@@ -152,7 +152,7 @@ ros2 launch hesai_ros_driver start.py
 
 Lidar data is available by subscribing to the topic:
 
-- Topic: `/lidar_points` (can be changed in `${lidar_ws_name}/src/HesaiLidar_ROS_2.0/config/config.yaml`)
+- Topic: `/lidar_points` (can be changed in `<your_ws_dir_name>/src/HesaiLidar_ROS_2.0/config/config.yaml`)
   - Msg type: [sensor_msgs/PointCloud2](https://docs.ros.org/en/jade/api/sensor_msgs/html/msg/PointCloud2.html)
   - Points per frame: 230,400
   - Frequency: 10 Hz
