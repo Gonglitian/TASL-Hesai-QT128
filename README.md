@@ -42,19 +42,42 @@ Refer to the [user manual](https://www.hesaitech.com/wp-content/uploads/QT128C2X
 
 Connect to the lidar using Ethernet.
 
-1. Run in terminal:
+### Step 1: Identify your network interface
 
 ```bash
-sudo ifconfig ${interface_name} ${ip_addr}
+ifconfig
 ```
-
-2. Replace **\${interface_name}** with your network interface name.
-   + Use `ifconfig` to list interfaces.
+Look for the name of the interface connected to the LiDAR (e.g., eth0, enp3s0, etc.).
 
 ![3](https://raw.githubusercontent.com/Gonglitian/images/main/img/20250103134640567.png)
 
-3. Set **\${ip_addr}** to your desired IP address.
-   + Use values between **2–200** or **202–254**, e.g. 192.168.1.100.
+### Step 2: Choose a static IP address
+
+Pick an IP address in the range:
+
+`192.168.1.2`–`192.168.1.200`, or
+
+`192.168.1.202`–`192.168.1.254`
+
+> ⚠️ Avoid using 192.168.1.201 — it may be the default IP of the LiDAR.
+
+Example:
+`192.168.1.100`
+
+
+
+### Step 3: Assign the IP address to your interface
+
+Run the following command, replacing the placeholders:
+
+```bash
+sudo ifconfig <interface_name> <ip_addr>
+```
+
+```bash
+sudo ifconfig eth0 192.168.1.100
+```
+
 
 ## Web Interface
 
